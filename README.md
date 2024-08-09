@@ -163,7 +163,7 @@ plt.show()
 As shown in Figure 3, it is quite intuitive to see the performance gains (more accurate estimates) of LCR over the baseline model with only global trend modeling.
 
 <p align="center">
-<img align="middle" src="graphics/LCR_time_series_gains.png" width="650" />
+<img align="middle" src="graphics/LCR_time_series_gains.png" width="600" />
 </p>
 
 <p align = "center">
