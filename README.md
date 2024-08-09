@@ -46,8 +46,119 @@ We evaluate the LCR model on several traffic flow datasets, including
 
 #### Quick Start
 
-We implement LCR algorithm with `numpy`, being as easy as possible. It should be no barrier for running these codes on any Python environment with `numpy`. Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would be not difficult to follow the experiment.
+We implement LCR algorithm with `numpy`, being as easy as possible. It should be no barrier for running these codes on any Python environment with `numpy`. Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would be not difficult to follow the experiment. Some key functions are summarized as follows,
 
+- `laplacian`: Generating a Laplacian kernel with hyperparameter `tau`.
+- `prox`: Performing L1-norm minimization with a thresholding method in the complex space.
+- `update_z`: There is a closed-form solution to the variable z.
+- `update_w`: This is a standard update of the variable w in ADMM.
+- `LCR`: This is the main function for implementing LCR.
+
+<br>
+
+```python
+import numpy as np
+
+def compute_mape(var, var_hat):
+    return np.sum(np.abs(var - var_hat) / var) / var.shape[0]
+
+def compute_rmse(var, var_hat):
+    return np.sqrt(np.sum((var - var_hat) ** 2) / var.shape[0])
+
+def laplacian(n, tau):
+    ell = np.zeros(n)
+    ell[0] = 2 * tau
+    for k in range(tau):
+        ell[k + 1] = -1
+        ell[-k - 1] = -1
+    return ell
+
+def prox(z, w, lmbda, denominator):
+    T = z.shape[0]
+    temp1 = np.fft.fft(lmbda * z - w) / denominator
+    temp2 = 1 - T / (denominator * np.abs(temp1))
+    temp2[temp2 <= 0] = 0
+    return np.fft.ifft(temp1 * temp2).real
+
+def update_z(y_train, pos_train, x, w, lmbda, eta):
+    z = x + w / lmbda
+    z[pos_train] = (lmbda / (lmbda + eta) * z[pos_train] 
+                    + eta / (lmbda + eta) * y_train)
+    return z
+
+def update_w(x, z, w, lmbda):
+    return w + lmbda * (x - z)
+
+def LCR(y_true, y, lmbda, gamma, tau, maxiter = 50):
+    eta = 100 * lmbda
+    T = y.shape
+    pos_train = np.where(y != 0)
+    y_train = y[pos_train]
+    pos_test = np.where((y_true != 0) & (y == 0))
+    y_test = y_true[pos_test]
+    z = y.copy()
+    w = y.copy()
+    ell = np.fft.fft(laplacian(T, tau))
+    denominator = lmbda + gamma * np.abs(ell) ** 2
+    del y_true, y
+    show_iter = 100
+    for it in range(maxiter):
+        x = prox(z, w, lmbda, denominator)
+        z = update_z(y_train, pos_train, x, w, lmbda, eta)
+        w = update_w(x, z, w, lmbda)
+        if (it + 1) % show_iter == 0:
+            print(it + 1)
+            print(compute_mape(y_test, x[pos_test]))
+            print(compute_rmse(y_test, x[pos_test]))
+            print()
+    return x
+```
+
+One simple example is Portland traffic volume time series imputation, please following these codes:
+
+```python
+import numpy as np
+np.random.seed(1)
+import time
+
+missing_rate = 0.95
+print('Missing rate = {}'.format(missing_rate))
+
+dense_mat = np.load('../datasets/Portland-data-set/volume.npy')
+d = 3
+dense_vec = dense_mat[0, : 96 * d]
+T = dense_vec.shape[0]
+sparse_vec = dense_vec * np.round(np.random.rand(T) + 0.5 - missing_rate)
+
+lmbda = 1e-2 * T
+gamma = 5 * lmbda
+tau = 2
+maxiter = 100
+x = LCR(dense_vec, sparse_vec, lmbda, gamma, tau, maxiter)
+
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 15})
+
+fig = plt.figure(figsize = (5.5, 2.4))
+ax = fig.add_subplot(111)
+plt.plot(dense_vec[: 96 * d], 'dodgerblue', linewidth = 1.5)
+plt.plot(x[: 96 * d], 'red', linewidth = 3)
+pos = np.where(sparse_vec != 0)
+plt.plot(pos[0], sparse_vec[pos], 'o', 
+         markeredgecolor = 'darkblue', 
+         markerfacecolor = 'deepskyblue', markersize = 10)
+plt.xlabel('Time')
+plt.ylabel('Volume')
+plt.xticks(np.arange(0, 96 * d + 1, 48))
+plt.xlim([0, 96 * d])
+plt.yticks(np.arange(0, 301, 100))
+plt.ylim([0, 300])
+plt.grid(linestyle = '-.', linewidth = 0.5)
+ax.tick_params(direction = 'in')
+
+plt.savefig('volumes_95.pdf', bbox_inches = "tight")
+plt.show()
+```
 
 As shown in Figure 3, it is quite intuitive to see the performance gains (more accurate estimates) of LCR over the baseline model with only global trend modeling.
 
