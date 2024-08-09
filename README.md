@@ -10,8 +10,24 @@
 
 > Laplacian convolutional representation for traffic time series imputation.
 
-The datasets and Python codes in this repository can be used to reproduce the following publication:
+<br>
 
+## Documentation
+
+### Problem Definition
+
+In this research, we aim at addressing traffic time series imputation problems by carefully utilizing global and local trends underlying the data, see Figure 1. While the global time series trend can be modeled by the circulant matrix nuclear norm optimization, we propose to characterize the local time series trend with Laplacian kernels and regularization. 
+
+<p align="center">
+<img align="middle" src="https://spatiotemporal-data.github.io/images/pickup_dropoff_trips_nyc_2024_april_may.png" width="700" />
+</p>
+
+<p align = "center">
+<b>Figure 1.</b> Traffic time series imputation on missing values.
+</p>
+
+
+<br>
 
 ## Features
 
