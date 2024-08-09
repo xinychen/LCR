@@ -8,7 +8,7 @@
 
 <br>
 
-> Laplacian convolutional representation (**LCR**) for traffic time series imputation.
+> Laplacian convolutional representation (**LCR**) for traffic time series imputation. If you are interested in the essential ideas of the methodology, please take a quick look at the [slides](https://xinychen.github.io/slides/LCR24.pdf).
 
 ## Documentation
 
@@ -180,7 +180,7 @@ LCR is an efficient algorithm for univariate and multivariate time series imputa
 
 ## Cite Us
 
-- Xinyu Chen, Zhanhong Cheng, HanQin Cai, Nicolas Saunier, Lijun Sun (2024). [Laplacian convolutional representation for traffic time series imputation](https://doi.org/10.1109/TKDE.2024.3419698). IEEE Transactions on Knowledge and Data Engineering. Early Access. [[PDF](https://xinychen.github.io/papers/Laplacian_convolution.pdf)] [[Slides](https://xinychen.github.io/slides/LCR24.pdf)]
+- Xinyu Chen, Zhanhong Cheng, HanQin Cai, Nicolas Saunier, Lijun Sun (2024). [Laplacian convolutional representation for traffic time series imputation](https://doi.org/10.1109/TKDE.2024.3419698). IEEE Transactions on Knowledge and Data Engineering. Early Access. [[PDF](https://xinychen.github.io/papers/Laplacian_convolution.pdf)] [[Slides](https://xinychen.github.io/slides/LCR24.pdf)] [[Blog post](https://spatiotemporal-data.github.io/posts/LCR/)]
 
 or 
 
