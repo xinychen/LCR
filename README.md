@@ -44,6 +44,11 @@ We evaluate the LCR model on several traffic flow datasets, including
 - CitySim speed field data [[Original data source website](https://github.com/ozheng1993/UCF-SST-CitySim-Dataset)]
 - PeMS traffic speed data in California [[PeMS-4W in `.npz`](https://github.com/xinychen/transdim/tree/master/datasets/California-data-set)]
 
+#### Quick Start
+
+We implement LCR algorithm with `numpy`, being as easy as possible. It should be no barrier for running these codes on any Python environment with `numpy`. Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would be not difficult to follow the experiment.
+
+
 <br>
 
 ## Features
