@@ -10,8 +10,6 @@
 
 > Laplacian convolutional representation (**LCR**) for traffic time series imputation.
 
-<br>
-
 ## Documentation
 
 ### Problem Definition
@@ -28,7 +26,7 @@ In this research, we aim at addressing traffic time series imputation problems b
 
 ### Framework
 
-As shown in Figure 2, the LCR model has two components in the framework. The first one is building [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix) on the given time series. The second one is correlating the local time series trend with a [circulant graph](https://en.wikipedia.org/wiki/Circulant_graph) structure, referring to a circular Laplacian kernel. Thus, the objective function of the optimization problem in LCR has two terms.
+As shown in Figure 2, the objective function of the optimization problem in LCR has two components which come from two procedures. The first procedure is building [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix) on the given time series. The second procedure is correlating the local time series trend with a [circulant graph](https://en.wikipedia.org/wiki/Circulant_graph) structure, referring to a circular Laplacian kernel.
 
 <p align="center">
 <img align="middle" src="graphics/Laplacian_convolutional_time_series.png" width="500" />
@@ -37,6 +35,14 @@ As shown in Figure 2, the LCR model has two components in the framework. The fir
 <p align = "center">
 <b>Figure 2.</b> Illustration of the LCR model on univariate time series.
 </p>
+
+### Experiments
+
+We evaluate the LCR model on several traffic flow datasets, including
+- Portland traffic speed/volume data [[Open data system in Portland](https://portal.its.pdx.edu/)]
+- HighD speed field data [[Original data source website](https://www.highd-dataset.com/)]
+- CitySim speed field data [[Original data source website](https://github.com/ozheng1993/UCF-SST-CitySim-Dataset)]
+- PeMS traffic speed data in California [[PeMS-4W in `.npz`](https://github.com/xinychen/transdim/tree/master/datasets/California-data-set)]
 
 <br>
 
