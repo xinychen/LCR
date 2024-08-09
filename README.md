@@ -19,7 +19,7 @@
 In this research, we aim at addressing traffic time series imputation problems by carefully utilizing global and local trends underlying the data, see Figure 1. While the global time series trend can be modeled by the circulant matrix nuclear norm optimization, we propose to characterize the local time series trend with Laplacian kernels and regularization. 
 
 <p align="center">
-<img align="middle" src="graphics/traffic_time_series_imputation.png" width="600" />
+<img align="middle" src="graphics/traffic_time_series_imputation.png" width="650" />
 </p>
 
 <p align = "center">
@@ -31,7 +31,7 @@ In this research, we aim at addressing traffic time series imputation problems b
 As shown in Figure 2, the LCR model has two components in the framework. The first one is building [circulant matrix](https://en.wikipedia.org/wiki/Circulant_matrix) on the given time series. The second one is correlating the local time series trend with a [circulant graph](https://en.wikipedia.org/wiki/Circulant_graph) structure, referring to a circular Laplacian kernel. Thus, the objective function of the optimization problem in LCR has two terms.
 
 <p align="center">
-<img align="middle" src="graphics/Laplacian_convolutional_time_series.png" width="600" />
+<img align="middle" src="graphics/Laplacian_convolutional_time_series.png" width="500" />
 </p>
 
 <p align = "center">
