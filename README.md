@@ -49,6 +49,16 @@ We evaluate the LCR model on several traffic flow datasets, including
 We implement LCR algorithm with `numpy`, being as easy as possible. It should be no barrier for running these codes on any Python environment with `numpy`. Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would be not difficult to follow the experiment.
 
 
+As shown in Figure 3, it is quite intuitive to see the performance gains (more accurate estimates) of LCR over the baseline model with only global trend modeling.
+
+<p align="center">
+<img align="middle" src="graphics/LCR_time_series_gains.png" width="650" />
+</p>
+
+<p align = "center">
+<b>Figure 3.</b> Performance gains of LCR over the global trend modeling with circulant matrix nuclear norm minimization.
+</p>
+
 <br>
 
 ## Features
