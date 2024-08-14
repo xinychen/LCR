@@ -89,7 +89,7 @@ def update_z(y_train, pos_train, x, w, lmbda, eta):
 def update_w(x, z, w, lmbda):
     return w + lmbda * (x - z)
 
-def LCR(y_true, y, lmbda, gamma, tau, maxiter = 50):
+def LCR(y_true, y, lmbda, gamma, tau, maxiter = 50, show_iter = 100):
     eta = 100 * lmbda
     T = y.shape
     pos_train = np.where(y != 0)
@@ -101,7 +101,6 @@ def LCR(y_true, y, lmbda, gamma, tau, maxiter = 50):
     ell = np.fft.fft(laplacian(T, tau))
     denominator = lmbda + gamma * np.abs(ell) ** 2
     del y_true, y
-    show_iter = 100
     for it in range(maxiter):
         x = prox(z, w, lmbda, denominator)
         z = update_z(y_train, pos_train, x, w, lmbda, eta)
