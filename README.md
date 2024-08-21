@@ -8,7 +8,7 @@
 
 <br>
 
-> Laplacian convolutional representation (**LCR**) for traffic time series imputation. If you are interested in the essential ideas of the methodology, please take a quick look at the [slides](https://xinychen.github.io/slides/LCR24.pdf).
+> Laplacian convolutional representation (**LCR**) for traffic time series imputation. If you are interested in the core ideas behind the methodology, please take a quick look at the [slides](https://xinychen.github.io/slides/LCR24.pdf). For beginners, we encourage you to check out the fundamental concepts and properties of circular convolution in this [post](https://spatiotemporal-data.github.io/posts/ts_conv/), which will help you develop a clear understanding of the methodology.
 
 ## Documentation
 
