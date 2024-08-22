@@ -129,7 +129,7 @@ dense_vec = dense_mat[0, : 96 * d]
 T = dense_vec.shape[0]
 sparse_vec = dense_vec * np.round(np.random.rand(T) + 0.5 - missing_rate)
 
-lmbda = 1e-2 * T
+lmbda = 5e-4 * T
 gamma = 5 * lmbda
 tau = 2
 maxiter = 100
