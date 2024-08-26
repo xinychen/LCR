@@ -86,6 +86,11 @@ def update_z(y_train, pos_train, x, w, lmbda, eta):
                     + eta / (lmbda + eta) * y_train)
     return z
 
+def update_z(y_train, pos_train, x, w, lmbda, eta):
+    z = x + w / lmbda
+    z[pos_train] = (eta * y_train + lmbda * z[pos_train]) / (eta + lmbda) 
+    return z
+
 def update_w(x, z, w, lmbda):
     return w + lmbda * (x - z)
 
