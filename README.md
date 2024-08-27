@@ -82,12 +82,6 @@ def prox(z, w, lmbda, denominator):
 
 def update_z(y_train, pos_train, x, w, lmbda, eta):
     z = x + w / lmbda
-    z[pos_train] = (lmbda / (lmbda + eta) * z[pos_train] 
-                    + eta / (lmbda + eta) * y_train)
-    return z
-
-def update_z(y_train, pos_train, x, w, lmbda, eta):
-    z = x + w / lmbda
     z[pos_train] = (eta * y_train + lmbda * z[pos_train]) / (eta + lmbda) 
     return z
 
