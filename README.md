@@ -105,9 +105,9 @@ def LCR(y_true, y, lmbda, gamma, tau, maxiter = 50, show_iter = 100):
         z = update_z(y_train, pos_train, x, w, lmbda, eta)
         w = update_w(x, z, w, lmbda)
         if (it + 1) % show_iter == 0:
-            print(it + 1)
-            print(compute_mape(y_test, x[pos_test]))
-            print(compute_rmse(y_test, x[pos_test]))
+            print('Iter: {}'.format(it + 1))
+            print('MAPE: {:.6}'.format(compute_mape(y_test, x[pos_test])))
+            print('RMSE: {:.6}'.format(compute_rmse(y_test, x[pos_test])))
             print()
     return x
 ```
