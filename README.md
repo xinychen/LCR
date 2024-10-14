@@ -178,18 +178,21 @@ LCR is an efficient algorithm for univariate and multivariate time series imputa
 
 ## Cite Us
 
-- Xinyu Chen, Zhanhong Cheng, HanQin Cai, Nicolas Saunier, Lijun Sun (2024). [Laplacian convolutional representation for traffic time series imputation](https://doi.org/10.1109/TKDE.2024.3419698). IEEE Transactions on Knowledge and Data Engineering. Early Access. [[PDF](https://xinychen.github.io/papers/Laplacian_convolution.pdf)] [[Slides](https://xinychen.github.io/slides/LCR24.pdf)] [[Blog post](https://spatiotemporal-data.github.io/posts/ts_conv)]
+- Xinyu Chen, Zhanhong Cheng, HanQin Cai, Nicolas Saunier, Lijun Sun (2024). [Laplacian convolutional representation for traffic time series imputation](https://doi.org/10.1109/TKDE.2024.3419698). IEEE Transactions on Knowledge and Data Engineering. 36 (11): 6490-6502. [[PDF](https://xinychen.github.io/papers/Laplacian_convolution.pdf)] [[Slides](https://xinychen.github.io/slides/LCR24.pdf)] [[Blog post](https://spatiotemporal-data.github.io/posts/ts_conv)]
 
 or 
 
 ```tex
 @article{chen2024laplacian,
-  title={Laplacian convolutional representation for traffic time series imputation},
   author={Chen, Xinyu and Cheng, Zhanhong and Cai, HanQin and Saunier, Nicolas and Sun, Lijun},
-  journal={IEEE Transactions on Knowledge and Data Engineering},
+  journal={IEEE Transactions on Knowledge and Data Engineering}, 
+  title={Laplacian Convolutional Representation for Traffic Time Series Imputation}, 
   year={2024},
-  publisher={IEEE}
-}
+  volume={36},
+  number={11},
+  pages={6490-6502},
+  keywords={Time series analysis;Laplace equations;Convolution;Market research;Data models;Kernel;Tensors;Circulant matrix nuclear norm;circular convolution;discrete fourier transform;fast fourier transform;laplacian kernelized regularization;low-rank models;spatiotemporal traffic data;time series imputation},
+  doi={10.1109/TKDE.2024.3419698}}
 ```
 
 <br>
